@@ -99,13 +99,9 @@
 - name: assert | Test fail2ban_jail_configuration
   ansible.builtin.assert:
     that:
-      - item.option is defined
-      - item.option is string
-      - item.option is not none
-      - item.value is defined
-      - item.section is defined
-      - item.section is string
-      - item.section is not none
+      - item.name is defined
+      - item.name is string
+      - item.name is not none
     quiet: true
   loop: "{{ fail2ban_jail_configuration }}"
   loop_control:
