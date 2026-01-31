@@ -1,0 +1,7 @@
+{# Template to create the jail #}
+{% for i in fail2ban_jail_configuration %}
+[{{ i.name }}]
+{% for k in i if k != 'name' %}
+{{ k }} = {{ i[k] }}
+{% endfor %}
+{% endfor %}
