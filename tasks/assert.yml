@@ -117,3 +117,12 @@
     quiet: true
   when:
     - fail2ban_filterd_path is defined
+
+- name: assert | Test item in fail2ban_actiond_path
+  ansible.builtin.assert:
+    that:
+      - fail2ban_actiond_path is string
+      - fail2ban_actiond_path is not none
+    quiet: true
+  when:
+    - fail2ban_actiond_path is defined

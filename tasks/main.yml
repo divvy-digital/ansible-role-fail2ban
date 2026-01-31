@@ -24,6 +24,18 @@
   notify:
     - Restart fail2ban
 
+- name: Copy actions in action.d
+  ansible.builtin.copy:
+    src: "{{ fail2ban_actiond_path }}"
+    dest: /etc/fail2ban/action.d/
+    owner: root
+    group: root
+    mode: "0640"
+  when:
+    - fail2ban_actiond_path is defined
+  notify:
+    - Restart fail2ban
+
 - name: Configure fail2ban.local
   community.general.ini_file:
     path: /etc/fail2ban/fail2ban.local
